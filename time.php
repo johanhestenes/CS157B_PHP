@@ -1,9 +1,9 @@
 <?php
-	print("<h2>Product</h2><br>");
+	print("<h2>Time</h2><br>");
 	$home = "index.php";
 	echo "<a href='". $home ."'>Home</a><br><br>";
 
-	function getProduct()
+	function getTime()
 	{
 		$servername = "localhost";
 		$username = "root";
@@ -11,7 +11,7 @@
 		$dbname = "grocery";
 
 		$con = mysqli_connect($servername, $username, $password, $dbname);
-		$query = "select * from product;";
+		$query = "select * from time;";
 		if ($con->connect_error) 
 		{
 			die("Connection failed: " . $con->connect_error);
@@ -28,28 +28,21 @@
 	
 	print("<table border=1>");
 	print("<tr>");
-	print("<th>Product Key</th>");
-	print("<th>Description</th>");
-	print("<th>Full Description</th>");
-	print("<th>SKU Number</th>");
-	print("<th>Package Size</th>");
-	print("<th>Brand</th>");
-	print("<th>Subcategory</th>");
-	print("<th>Category</th>");
-	print("<th>Department</th>");
-	print("<th>Package Type</th>");
-	print("<th>Diet Type</th>");
-	print("<th>Weight</th>");
-	print("<th>Weight Unit of Measure</th>");
-	print("<th>Units Per Retail Case</th>");
-	print("<th>Units Per Shipping Case</th>");
-	print("<th>Cases Per Pallet</th>");
-	print("<th>Shelf Width CM</th>");
-	print("<th>Shelf Height CM</th>");
-	print("<th>Shelf Depth CM</th>");
+	print("<th>Time Key</th>");
+	print("<th>Date</th>");
+	print("<th>Day of Week</th>");
+	print("<th>Day Number in Month</th>");
+	print("<th>Day Number Overall</th>");
+	print("<th>Week Number in Year</th>");
+	print("<th>Week Number Overall</th>");
+	print("<th>Month</th>");
+	print("<th>Quarter</th>");
+	print("<th>Fiscal Period</th>");
+	print("<th>Year</th>");
+	print("<th>Holiday Flag</th>");
 	print("</tr>");
 	
-	$output = getProduct();	
+	$output = getTime();	
 			
 	for ($x = 0; $x < sizeof($output); $x++)
 	{
@@ -66,13 +59,6 @@
 		print("<td>{$output[$x][9]}</td>");
 		print("<td>{$output[$x][10]}</td>");
 		print("<td>{$output[$x][11]}</td>");
-		print("<td>{$output[$x][12]}</td>");
-		print("<td>{$output[$x][13]}</td>");
-		print("<td>{$output[$x][14]}</td>");
-		print("<td>{$output[$x][15]}</td>");
-		print("<td>{$output[$x][16]}</td>");
-		print("<td>{$output[$x][17]}</td>");
-		print("<td>{$output[$x][18]}</td>");
 		print("</tr>");
 	}
 	print("</table>");
