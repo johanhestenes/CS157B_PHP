@@ -5,12 +5,9 @@
 
 	function getFact()
 	{
-		$servername = "localhost";
-		$username = "root";
-		$password = "mysql94";
-		$dbname = "grocery";
-
-		$con = mysqli_connect($servername, $username, $password, $dbname);
+		include 'DBconstants.php';
+	
+		$con = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASENAME);
 		$query = "select * from salesfact;";
 		if ($con->connect_error) 
 		{
