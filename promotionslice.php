@@ -1,22 +1,22 @@
 <?php
-	print("<h2>Base Cube</h2><br>");
+	print("<h2>Promotion</h2><br>");
 	$home = "index.php";
 	echo "<a href='". $home ."'>Home</a><br><br>";
 
-	function getCube()
+	function getPromotion()
 	{
 		include 'DBconstants.php';
 	
 		$con = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASENAME);
 		$query = 
 		"SELECT 
-			product.description, promotion.promotion_name, store.name, time.date, SUM(salesfact.unit_sales), ROUND(SUM(salesfact.dollar_sales), 2), ROUND(SUM(salesfact.dollar_cost), 2), SUM(salesfact.customer_count)
+			promotion.*, SUM(salesfact.unit_sales), ROUND(SUM(salesfact.dollar_sales), 2), ROUND(SUM(salesfact.dollar_cost), 2), SUM(salesfact.customer_count)
 		FROM 
-			product, promotion, store, time, salesfact 
+			promotion, salesfact 
 		WHERE 
-			product.product_key = salesfact.product_key AND promotion.promotion_key = salesfact.promotion_key AND store.store_key = salesfact.store_key AND time.time_key = salesfact.time_key 
+			promotion.promotion_key = salesfact.promotion_key 
 		GROUP BY 
-			product.description, promotion.promotion_name, store.name, time.date;";
+			promotion.promotion_name;";
 		if ($con->connect_error) 
 		{
 			die("Connection failed: " . $con->connect_error);
@@ -33,17 +33,24 @@
 	
 	print("<table border=1>");
 	print("<tr>");
-	print("<th>Product Description</th>");
+	print("<th>Promotion Key</th>");
 	print("<th>Promotion Name</th>");
-	print("<th>Store Name</th>");
-	print("<th>Date</th>");
+	print("<th>Price Reduction Type</th>");
+	print("<th>Ad Type</th>");
+	print("<th>Display Type</th>");
+	print("<th>Coupon Type</th>");
+	print("<th>Ad Media Type</th>");
+	print("<th>Display Provider</th>");
+	print("<th>Promo Cost</th>");
+	print("<th>Promo Begin Date</th>");
+	print("<th>Promo End Date</th>");
 	print("<th>Units Sold</th>");
 	print("<th>Dollar Sales</th>");
 	print("<th>Dollar Cost</th>");
 	print("<th>Customer Count</th>");
 	print("</tr>");
 	
-	$output = getCube();	
+	$output = getPromotion();	
 			
 	for ($x = 0; $x < sizeof($output); $x++)
 	{
@@ -56,6 +63,13 @@
 		print("<td>{$output[$x][5]}</td>");
 		print("<td>{$output[$x][6]}</td>");
 		print("<td>{$output[$x][7]}</td>");
+		print("<td>{$output[$x][8]}</td>");
+		print("<td>{$output[$x][9]}</td>");
+		print("<td>{$output[$x][10]}</td>");
+		print("<td>{$output[$x][11]}</td>");
+		print("<td>{$output[$x][12]}</td>");
+		print("<td>{$output[$x][13]}</td>");
+		print("<td>{$output[$x][14]}</td>");
 		print("</tr>");
 	}
 	print("</table>");
