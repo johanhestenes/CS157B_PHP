@@ -1,11 +1,10 @@
 <?php
 	print("<h2>Time</h2><br>");
 	$home = "../index.php";
-	$drilldown = "date.php";
-	$rollup = "month.php";
+	$rollup = "dayofweek.php";
 	
 	echo "<a href='". $home ."'>Home</a><br><br>";
-	echo "<a href='". $drilldown ."'>Drill Down</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href='". $rollup ."'>Roll Up</a><br><br>";
+	echo "<a href='". $rollup ."'>Roll Up</a><br><br>";
 
 	function getTime()
 	{
@@ -14,13 +13,13 @@
 		$con = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASENAME);
 		$query = 
 		"SELECT 
-			time.day_of_week, SUM(salesfact.unit_sales), ROUND(SUM(salesfact.dollar_sales), 2), ROUND(SUM(salesfact.dollar_cost), 2), SUM(salesfact.customer_count)
+			time.date, SUM(salesfact.unit_sales), ROUND(SUM(salesfact.dollar_sales), 2), ROUND(SUM(salesfact.dollar_cost), 2), SUM(salesfact.customer_count)
 		FROM 
 			time, salesfact 
 		WHERE 
 			time.time_key = salesfact.time_key 
 		GROUP BY 
-			time.day_of_week;";
+			time.date;";
 		$result = mysqli_query($con, $query);
 		$resultArray = array();
 		while ($row = mysqli_fetch_array($result,MYSQLI_NUM)) 
@@ -33,7 +32,7 @@
 	
 	print("<table border=1>");
 	print("<tr>");
-	print("<th>Day of Week</th>");
+	print("<th>Date</th>");
 	print("<th>Units Sold</th>");
 	print("<th>Dollar Sales</th>");
 	print("<th>Dollar Cost</th>");

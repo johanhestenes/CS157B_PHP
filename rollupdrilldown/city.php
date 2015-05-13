@@ -1,10 +1,11 @@
 <?php
-	print("<h2>Time</h2><br>");
+	print("<h2>Store</h2><br>");
 	$home = "../index.php";
+	$drilldown = "address.php";
 	$rollup = "county.php";
 	
 	echo "<a href='". $home ."'>Home</a><br><br>";
-	echo "<a href='". $rollup ."'>Roll Up</a><br><br>";
+	echo "<a href='". $drilldown ."'>Drill Down</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href='". $rollup ."'>Roll Up</a><br><br>";
 
 	function getStore()
 	{

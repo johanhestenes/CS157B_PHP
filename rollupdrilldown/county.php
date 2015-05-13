@@ -1,5 +1,5 @@
 <?php
-	print("<h2>Time</h2><br>");
+	print("<h2>Store</h2><br>");
 	$home = "../index.php";
 	$drilldown = "city.php";
 	$rollup = "state.php";
