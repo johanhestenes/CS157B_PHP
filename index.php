@@ -6,12 +6,12 @@
   </head>
   <body>
 	<h1>CS157B Team Project</h1>
-    <a href="dimensions.php">View Dimensions</a><br>
-	<a href="salesfact.php">View Fact</a><br>
-	<a href="basecube.php">Base Cube</a><br>
-	Roll Up<br>
-	Drill Down<br>
-	<a href="sliceselect.php">Slice</a><br>
+	<h2>Grocery Database</h2>
+    <a href="dimensions/dimensions.php">View Dimensions</a><br>
+	<a href="fact/salesfact.php">View Fact</a><br>
+	<a href="basecube/basecube.php">Base Cube</a><br>
+	<a href="rollupdrilldown/rollupdrilldown.php">Roll Up / Drill Down</a><br>
+	<a href="slice/sliceselect.php">Slice</a><br>
 	Dice<br>
   </body>
 </html>
