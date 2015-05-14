@@ -18,7 +18,7 @@
 		FROM 
 			store, salesfact 
 		WHERE 
-			store.store_key = salesfact.time_key 
+			store.store_key = salesfact.store_key 
 		GROUP BY 
 			store.store_county;";
 		$result = mysqli_query($con, $query);
