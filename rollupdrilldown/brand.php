@@ -1,11 +1,10 @@
 <?php
 	print("<h2>Product</h2><br>");
 	$home = "../index.php";
-	$drilldown = "brand.php";
-	$rollup = "category.php";
+	$rollup = "subcategory.php";
 	
 	echo "<a href='". $home ."'>Home</a><br><br>";
-	echo "<a href='". $drilldown ."'>Drill Down</a>&nbsp&nbsp&nbsp&nbsp&nbsp<a href='". $rollup ."'>Roll Up</a><br><br>";
+	echo "<a href='". $rollup ."'>Roll Up</a><br><br>";
 
 	function getProduct()
 	{
@@ -14,13 +13,13 @@
 		$con = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASENAME);
 		$query = 
 		"SELECT 
-			product.subcategory, SUM(salesfact.unit_sales), ROUND(SUM(salesfact.dollar_sales), 2), ROUND(SUM(salesfact.dollar_cost), 2), SUM(salesfact.customer_count)
+			product.brand, SUM(salesfact.unit_sales), ROUND(SUM(salesfact.dollar_sales), 2), ROUND(SUM(salesfact.dollar_cost), 2), SUM(salesfact.customer_count)
 		FROM 
 			product, salesfact 
 		WHERE 
 			product.product_key = salesfact.product_key 
 		GROUP BY 
-			product.subcategory;";
+			product.brand;";
 		$result = mysqli_query($con, $query);
 		$resultArray = array();
 		while ($row = mysqli_fetch_array($result,MYSQLI_NUM)) 
@@ -33,7 +32,7 @@
 	
 	print("<table border=1>");
 	print("<tr>");
-	print("<th>Subcategory</th>");
+	print("<th>Brand</th>");
 	print("<th>Units Sold</th>");
 	print("<th>Dollar Sales</th>");
 	print("<th>Dollar Cost</th>");
