@@ -1,5 +1,5 @@
 <?php
-	print("<h2>Product</h2><br>");
+	print("<h2>Dice by Categories: Drinks or Food</h2><br>");
 	$home = "../index.php";
 	echo "<a href='". $home ."'>Home</a><br><br>";
 
@@ -15,7 +15,7 @@
 			product, salesfact 
 		WHERE 
 			product.product_key = salesfact.product_key 
-			AND (product.Category = "Drinks" OR product.Category = "Food") 
+			AND (product.category='Drinks' OR product.category='Food') 
 		GROUP BY 
 			product.description;";
 		if ($con->connect_error) 
