@@ -12,6 +12,6 @@
 	<a href="basecube/basecube.php">Base Cube</a><br>
 	<a href="rollupdrilldown/rollupdrilldown.php">Roll Up / Drill Down</a><br>
 	<a href="slice/sliceselect.php">Slice</a><br>
-	Dice<br>
+	<a href="dice/diceselect.php">Dice</a><br>
   </body>
 </html>
